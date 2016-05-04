@@ -8,10 +8,20 @@ import String
 
 -- MODEL
 
-type alias Model = String
+type alias Model = {name: String, age: Int}
+type alias DesignModel = {brandFont: String, accentFont: String,
+  primaryColor: String, accentColor: String, backgroundColor: String}
+type alias SocialModel = {twitter: String, github: String}
 
 model : Model
-model = "Marcus Nordberg"
+model = {name = "MARCUS NORDBERG", age = 23}
+
+designModel : DesignModel
+designModel = {brandFont = "Roboto", accentFont = "Liberation",
+  primaryColor = "#4CAF50", accentColor = "#2E7D32", backgroundColor = "#E8F5E9"}
+
+socialModel : SocialModel
+socialModel = {twitter = "@marcusnordberg", github = "nordberg"}
 
 -- UPDATE
 
