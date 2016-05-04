@@ -37,24 +37,37 @@ update action model =
 view : Signal.Address Action -> Model -> Html
 view address model =
   div []
-    [ div [ ] [ div [ headerContent ] [ text (toString model) ]]
-    , div [ ] [ div [ bodyContent ] [ text (toString model) ]]
+    [ div [ ] [ div [ headerContent ] [ text (model.name) ]]
+    , div [ ] [ div [ bodyContent ] [ text (toString model.age) ]]
+    , div [ ] [ div [ socialContent ] [ text ("Twitter: " ++ socialModel.twitter) ]]
     ]
 
 headerContent : Attribute
 headerContent =
   style
-    [ ("font-size", "35px")
-    , ("font-family", "Roboto")
-    , ("display", "inline-block")
+    [ ("font-size", "64px")
+    , ("font-family", designModel.brandFont)
+    , ("color", designModel.primaryColor)
+    , ("display", "block")
+    , ("height", "200px")
     , ("text-align", "center")
+    , ("background-color", designModel.backgroundColor)
     ]
 
 bodyContent : Attribute
 bodyContent =
   style
     [ ("font-size", "24px")
-    , ("font-family", "Liberation")
+    , ("font-family", designModel.accentFont)
+    , ("display", "inline-block")
+    , ("text-align", "center")
+    ]
+
+socialContent : Attribute
+socialContent =
+  style
+    [ ("font-size", "18px")
+    , ("font-family", designModel.accentFont)
     , ("display", "inline-block")
     , ("text-align", "center")
     ]
