@@ -1,9 +1,8 @@
-module Website (model, update, Action, view) where
+module Website exposing (init, model, update, Msg, view)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Signal exposing (Signal, Address)
 import String
 
 -- MODEL
@@ -25,17 +24,19 @@ socialModel = {twitter = "@marcusnordberg", github = "nordberg"}
 
 -- UPDATE
 
-type Action = NewName
+init = model
 
-update : Action -> Model -> Model
-update action model =
-  case action of
+type Msg = NewName
+
+update : Msg -> Model -> Model
+update message model =
+  case message of
     NewName -> model
 
 -- VIEW
 
-view : Signal.Address Action -> Model -> Html
-view address model =
+view : Model -> Html Msg
+view model =
   div []
     [ div [ header ]
       [ text (model.name) ]
@@ -45,7 +46,6 @@ view address model =
       ]
   ]
 
-body : Attribute
 body =
   style
     [ ("display", "block")
@@ -53,7 +53,6 @@ body =
     , ("min-height", "100%")
     ]
 
-header : Attribute
 header =
   style
     [ ("font-size", "4em")
@@ -65,7 +64,6 @@ header =
     , ("background-color", designModel.backgroundColor)
     ]
 
-bodyContent : Attribute
 bodyContent =
   style
     [ ("font-size", "2em")
@@ -74,7 +72,6 @@ bodyContent =
     , ("text-align", "center")
     ]
 
-socialContent : Attribute
 socialContent =
   style
     [ ("font-size", "1em")
@@ -83,7 +80,6 @@ socialContent =
     , ("text-align", "center")
     ]
 
-footer : Attribute
 footer =
   style
     [ ("font-size", ".8em")
